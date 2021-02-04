@@ -2,7 +2,8 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const {prefix, discordtoken} = require('./config.json');
+const { prefix, discordtoken} = require('./config.json');
+
 
 
 client.commands = new Discord.Collection();
@@ -27,6 +28,12 @@ client.on('message', message => {
     }
 });
 
+// client.on('message', message => {
+//     if (message.content.startsWith(`${prefix}embed`)) {
+//         message.channel.send(embedMsg.setTitle("Challenger"))
+//     }
+// });
+
 client.on('message', async message => {
     if (message.channel.id === "804494561556037643"){
         if (message.content.startsWith(`${prefix}rank`)) {
@@ -34,16 +41,17 @@ client.on('message', async message => {
        }
     }
 });
-client.on('message', async message => {
-	// Join the same voice channel of the author of the message
-	if (message.member.voice.channel) {
-        const connection = await message.member.voice.channel.join();
-        // const audio = connection.receiver.createStream(user, { mode: 'pcm' });
-        // audio.pipe(fs.createWriteStream('user_audio'));
-        // const audio = connectionA.receiver.createStream('238273480594817024');
-        // connectionB.play(audio, { type: 'opus' });
-        // console.log(audio)
-	}
-});
+
+// client.on('message', async message => {
+// 	// Join the same voice channel of the author of the message
+// 	if (message.member.voice.channel) {
+//         const connection = await message.member.voice.channel.join();
+//         // const audio = connection.receiver.createStream(user, { mode: 'pcm' });
+//         // audio.pipe(fs.createWriteStream('user_audio'));
+//         // const audio = connectionA.receiver.createStream('238273480594817024');
+//         // connectionB.play(audio, { type: 'opus' });
+//         // console.log(audio)
+// 	}
+// });
 
 client.login(discordtoken);
