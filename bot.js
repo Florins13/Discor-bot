@@ -28,17 +28,11 @@ client.on('message', message => {
     }
 });
 
-// client.on('message', message => {
-//     if (message.content.startsWith(`${prefix}embed`)) {
-//         message.channel.send(embedMsg.setTitle("Challenger"))
-//     }
-// });
-
 client.on('message', async message => {
     if (message.channel.id === "804494561556037643"){
         if (message.content.startsWith(`${prefix}rank`)) {
             client.commands.get('lol-rank').execute(message);
-       }
+        }
     }
 });
 

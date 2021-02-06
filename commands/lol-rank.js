@@ -37,9 +37,10 @@ module.exports = {
             region = getAPIregion(opGG);
             user = message.content.slice(message.content.indexOf(' ')+1);
             summonerName =  message.content.slice(message.content.indexOf(' ')+1)
-            if(/\s/.test(user)){
-                user = user.replace(/\s/g, '%20')
-            }
+            
+        }
+        if(/\s/.test(user)){
+            user = user.replace(/\s/g, '%20')
         }
         try{
             const getAccountId = new URL(`https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${user}?api_key=${riottoken}`); // string literal puts 20% instead of space, omg...

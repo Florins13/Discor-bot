@@ -9,7 +9,7 @@ module.exports = {
 		.attachFiles(['./assets/icons/skull.png'])
 		.setColor("ORANGE")
 		.setTitle(name)
-		.setURL(`https://${region==='kr'?'kr.':region+'.'}op.gg/summoner/userName=${user}`)
+		.setURL(`https://${region==='kr'?'':region+'.'}op.gg/summoner/userName=${user}`)
 		// .setAuthor('Rankul acestui noob este: ', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
 		// .setDescription('Some description here')
 		.setThumbnail('attachment://' + summoner.tier + '.png')
