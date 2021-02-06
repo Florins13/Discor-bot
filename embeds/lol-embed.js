@@ -1,32 +1,30 @@
 const Discord = require('discord.js');
 
-// inside a command, event listener, etc.
-
-
 module.exports = {
 	name: 'Embed for lol',
 	description: 'Give fancy window for given summoner!',
-	render(color, title, league, rank, wins, losses) {
+	render(sumonnerName, user,league, rank, leaguePoints, wins, losses, queueType) {
 		const exampleEmbed = new Discord.MessageEmbed()
 		.attachFiles(['./assets/ranked-emblems/' + league + '.png'])
-		// .setImage('attachment://' + league + '.png')
-		.setColor(color)
-		.setTitle(title)
-		.setURL('https://eune.op.gg/summoner/userName=' + title)
+		.attachFiles(['./assets/icons/skull.png'])
+		.setColor("ORANGE")
+		.setTitle(sumonnerName)
+		.setURL('https://eune.op.gg/summoner/userName=' + user)
 		// .setAuthor('Rankul acestui noob este: ', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
 		// .setDescription('Some description here')
-		// .addField('\u200B', '\u200B')
 		.setThumbnail('attachment://' + league + '.png')
 		.addFields(
-			{ name: 'Liga:', value: league + ' ' + rank,inline: false },
-			// { name: '\u200B', value: '\u200B' },
-			{ name: 'Meciuri castigate', value: wins,inline: false },
-			{ name: 'Meciuri pierdute', value: losses, inline: false },
-			// { name: '\u200B', value: '\u200B' },
+			{ name: 'Liga:', value: league + ' ' + rank, inline : false },
+			{ name: 'Tip q:', value: queueType , inline: false },
+			{ name: 'Puncte in liga:', value: '---- ' + leaguePoints  + ' ----' , inline: false },
+			{ name: 'Meciuri castigate:', value: '---- ' + wins + ' ----' , inline: false },
+			{ name: 'Meciuri pierdute:', value: '---- ' + losses + ' ----' , inline: false },
+			{ name: 'Procentaj castigate:', value: '--- ' + Math.round((wins/(wins+losses))*100) + '%' + ' ---' , inline: false },
+			
 		)
-		// .addField('Inline field title', 'Some value here', true)
 		.setTimestamp()
-		.setFooter('Powered by Hackerman v1.0', 'https://i.imgur.com/wSTFkRM.png');
+		.setFooter('Powered by Hackerman v1.0', 'attachment://skull.png');
+		
 		return exampleEmbed;
 	},
 };
